@@ -47,10 +47,16 @@
 							</form>								
 						</div>
 						<div class="col-md-3 col-sm-12 text-right">
-							<ul class="nav-icons">
-								<li><a href="register.html"><i class="ion-person-add"></i><div>Register</div></a></li>
-								<li><a href="{url 'login'}"><i class="ion-person"></i><div>Login</div></a></li>
-							</ul>
+							{% if user.is_authenticated %}
+								<ul class="nav-icons">
+									<li><a href="{% url 'logout' %}?next={% url 'home' %}"><i class="ion-person"></i><div>Logout</div></a></li>
+								</ul>
+							{% else %}
+								<ul class="nav-icons">
+									<li><a href="{% url 'register' %}"><i class="ion-person-add"></i><div>Register</div></a></li>
+									<li><a href="{% url 'login' %}"><i class="ion-person"></i><div>Login</div></a></li>
+								</ul>
+							{% endif %}
 						</div>
 					</div>
 				</div>
