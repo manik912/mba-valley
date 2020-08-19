@@ -15,13 +15,11 @@ class CustomUserManager(BaseUserManager):
 
 
 class User(AbstractUser):
-    username = None
+    username = models.CharField(max_length=100, unique=True)
     email = models.EmailField(verbose_name='Email Address', unique=True)
-    is_student = models.BooleanField(default=False)
-    is_startup = models.BooleanField(default=False)
     is_team = models.BooleanField(default=False)
     
-    USERNAME_FIELD = 'email'
+    USERNAME_FIELD = 'username'
     REQUIRED_FIELDS = []
 
     objects = CustomUserManager()
@@ -32,12 +30,7 @@ class User(AbstractUser):
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True, related_name ='student_profile')
     name = models.CharField(max_length=60, default='')
-    city_of_residence = models.CharField(max_length=40, default='')
-    college = models.CharField(max_length=50, default='')
-    area_of_specialization = models.CharField(max_length=60, default='')
-    year_of_study = models.IntegerField(default=1)
     contact = PhoneNumberField(blank=False)
-    cgpa = models.FloatField(default=0)
 
     def __str__(self):
         return self.user
