@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
+.logo{
+	max-width: 80px;
+}
+.tagline{
+	font-family: 'Pacifico', cursive;
+	/*width: 90px;*/
+	margin-top: 30px;
+	/*margin-left: 25px;*/
+	font-size: 20px;
+}
+#videos{
+	display: none;
+}
+
+@media screen and (max-width: 768px) {
+  .tagline{
+  	margin-top: 0;
+  }
+  #videos{
+  	display: block;
+  	padding-left: 10px;
+  	padding-right: 10px;
+  }
+}
