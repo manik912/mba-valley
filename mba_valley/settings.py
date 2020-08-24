@@ -20,7 +20,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'b^h-dsk4byz*(=ytl28f!3eaeguvtb4soy48l6ch$eb!g=yqkm'
+SECRET_KEY = '9_krbx)fn2=t05kt3iwyu!8crq+puw-_l*$@1c)k)u@suraz03'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -43,6 +43,8 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -120,18 +122,9 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
-LANGUAGE_CODE = 'en-us'
-
-TIME_ZONE = 'Asia/Kolkata'
-
-USE_I18N = True
-
-USE_L10N = True
-
-USE_TZ = True
-
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 
 LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'home'
@@ -141,6 +134,7 @@ MEDIA_URL = '/media/'
 
 AUTH_USER_MODEL = "user.User"
 
-ACCOUNT_AUTHENTICATION_METHOD = 'username'
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+

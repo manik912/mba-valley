@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Baloo+Tamma+2&display=swap');
 .logo{
 	max-width: 80px;
 }
@@ -10,10 +10,26 @@
 	/*margin-left: 25px;*/
 	font-size: 20px;
 }
+.p2{
+	font-family: 'Baloo Tamma 2', cursive;
+	font-size: 20px;
+	margin-top:30px;
+}
 #videos{
 	display: none;
 }
 
+.more_btn{
+	align-self: center;
+}
+.vid-title{
+  font-size: 16px;
+  /*display: inline;*/
+  font-weight: 800;
+  margin: 0;
+  text-transform: uppercase;
+  margin-bottom: 30px;
+}
 @media screen and (max-width: 768px) {
   .tagline{
   	margin-top: 0;
