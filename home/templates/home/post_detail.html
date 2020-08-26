@@ -1,0 +1,105 @@
+{% extends 'home/base.html' %}
+{% load static %}
+{% block head %}
+{% endblock head %}
+{% block body %}
+<section class="login first grey">
+    <div class="container">
+        <div class="col-md-8 col-sm-12 col-xs-12">
+            <div class="p2">
+                    <h1>{{ post.title }}</h1>&nbsp;
+                    <hr>
+                        <p> Posted on {{ post.date_published }}</p>
+                    <hr>
+                    <p>{{ post.content }}</p>
+            </div>
+                
+        </div>
+        <div class="col-xs-6 col-md-4 sidebar" id="sidebar">
+            <div class="sidebar-title for-tablet">Sidebar</div>
+            <aside>
+                <h1 class="aside-title">Popular <a href="#" class="all">See All <i class="ion-ios-arrow-right"></i></a></h1>
+                <div class="aside-body">
+                    <article class="article-mini">
+                        <div class="inner">
+                            <figure>
+                                <a href="article.html">
+                                    <img src="../images/article.jpg" alt="Sample Article">
+                                </a>
+                            </figure>
+                            <div class="padding">
+                                <h1><a href="article.html">Indian Wedding Planner Industry</a></h1>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="article-mini">
+                        <div class="inner">
+                            <figure>
+                                <a href="article2.html">
+                                    <img src="../images/article.jpg" alt="Sample Article">
+                                </a>
+                            </figure>
+                            <div class="padding">
+                                <h1><a href="article2.html"> Founder </a></h1>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="article-mini">
+                        <div class="inner">
+                            <figure>
+                                <a href="article3.html">
+                                    <img src="../images/article.jpg" alt="Sample Article">
+                                </a>
+                            </figure>
+                            <div class="padding">
+                                <h1><a href="article3.html">Student Suicide</a></h1>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="article-mini">
+                        <div class="inner">
+                            <figure>
+                                <a href="article1.html">
+                                    <img src="../images/article.jpg" alt="Sample Article">
+                                </a>
+                            </figure>
+                            <div class="padding">
+                                <h1><a href="article1.html"> Matchmaking </a></h1>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="article-mini">
+                        <div class="inner">
+                            <figure>
+                                <a href="article4.html">
+                                    <img src="../images/article.jpg" alt="Sample Article">
+                                </a>
+                            </figure>
+                            <div class="padding">
+                                <h1><a href="article4.html"> Taleb- A contrarian </a></h1>
+                            </div>
+                        </div>
+                    </article>
+                    
+                </div>
+            </aside>
+            <aside>
+                <h1 class="aside-title">Videos
+                    <div class="carousel-nav" id="video-list-nav">
+                        <div class="prev"><i class="ion-ios-arrow-left"></i></div>
+                        <div class="next"><i class="ion-ios-arrow-right"></i></div>
+                    </div>
+                </h1>
+                <div class="aside-body">
+                    <ul class="video-list" data-youtube='"carousel":true, "nav": "#video-list-nav"'>
+                        <li><a data-youtube-id="PJutG613i7E" data-action="new_tab"></a></li>
+                        <li><a data-youtube-id="PJutG613i7E" data-action="new_tab"></a></li>
+                        <li><a data-youtube-id="PJutG613i7E" data-action="new_tab"></a></li>
+                    </ul>
+                </div>
+            </aside>
+        </div>
+    </div>
+</div>
+</section>
+{% endblock body %}
