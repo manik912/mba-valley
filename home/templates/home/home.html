@@ -69,19 +69,23 @@
                 <aside>
                     <h1 class="aside-title">Popular <a href="#" class="all">See All <i class="ion-ios-arrow-right"></i></a></h1>
                     <div class="aside-body">
+                        {% if popular %}
+                        {% for post in popular %}
                         <article class="article-mini">
                             <div class="inner">
                                 <figure>
                                     <a href="articles/article.html">
-                                        <img src="images/article.jpg" alt="Sample Article">
+                                        <img src="{{ post.blog_image.url }}" alt="Sample Article">
                                     </a>
                                 </figure>
                                 <div class="padding">
-                                    <h1><a href="articles/article.html">Indian Wedding Planner Industry</a></h1>
+                                    <h1><a href="articles/article.html">{{ post.title }}</a></h1>
                                 </div>
                             </div>
                         </article>
-                        <article class="article-mini">
+                        {% endfor %}
+                        {% endif %}
+                        <!-- <article class="article-mini">
                             <div class="inner">
                                 <figure>
                                     <a href="articles/article2.html">
@@ -128,7 +132,7 @@
                                     <h1><a href="articles/article4.html"> Taleb- A contrarian </a></h1>
                                 </div>
                             </div>
-                        </article>
+                        </article> -->
                         
                     </div>
                 </aside>
