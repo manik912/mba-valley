@@ -4,8 +4,7 @@ from django.contrib.auth.models import AbstractUser
 
 
 class User(AbstractUser):
-	"""docstring for User"""
-	email 				= models.EmailField(verbose_name='Email Address', unique=True)
+	email 				= models.EmailField(verbose_name='Email Address')
 	name 				= models.CharField(max_length=50)
 	eCoins 				= models.DecimalField(decimal_places=2, max_digits= 9, default=150000)
 	contact_no 			= PhoneNumberField(blank=False, null=False, help_text='Add country code before the contact no.')
