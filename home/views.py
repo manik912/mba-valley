@@ -40,5 +40,18 @@ def SearchView(request):
 
 
 
-class PostDetailView(DetailView):
-    model = Post
+# class PostDetailView(DetailView):
+#     model = Post
+
+def PostDetailView(request, pk):
+
+    post = Post.objects.filter(id=pk).first()
+    
+    context = {
+        'post' : post,
+    }
+
+    return render(request, 'home/post_detail.html', context)
+
+def competitionDetailView(request):
+    return render(request, 'home/competition_detail.html')
