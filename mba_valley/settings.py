@@ -16,6 +16,7 @@ import os
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
@@ -35,14 +36,19 @@ INSTALLED_APPS = [
     'user.apps.UserConfig',
     'django.contrib.admin',
     'django.contrib.auth',
+    'django.contrib.sites',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'crispy_forms',
-    'social_django',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
 ]
 
+SITE_ID = 1
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -54,7 +60,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'social_django.middleware.SocialAuthExceptionMiddleware',
 ]
 
 ROOT_URLCONF = 'mba_valley.urls'
@@ -62,9 +67,7 @@ ROOT_URLCONF = 'mba_valley.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [
-            os.path.join(BASE_DIR, 'templates'),
-        ],
+        'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -73,17 +76,14 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
 
-                'social_django.context_processors.backends', 
-                'social_django.context_processors.login_redirect',
+                
             ],
         },
     },
 ]
 
 AUTHENTICATION_BACKENDS = (
-    'social.backends.facebook.FacebookOAuth2',
-    'social.backends.google.GoogleOAuth2',
-    'social.backends.twitter.TwitterOAuth',
+    'allauth.account.auth_backends.AuthenticationBackend',
     'django.contrib.auth.backends.ModelBackend',
 )
 
@@ -142,7 +142,6 @@ STATIC_URL = '/static/'
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 
 LOGIN_URL = 'login'
-LOGOUT_URL = 'logout'
 LOGIN_REDIRECT_URL = 'home'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
@@ -150,10 +149,14 @@ MEDIA_URL = '/media/'
 
 AUTH_USER_MODEL = "user.User"
 
+
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_UNIQUE_EMAIL = True
+ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
+ACCOUNT_USERNAME_REQUIRED = False
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
 
-SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '303782185017-dc99uo7ojjthk8o0bs210iilck3bvpqg.apps.googleusercontent.com'
-SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'nDsGE1Y9kMSNdbT-XVHjdNjK'
+
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
