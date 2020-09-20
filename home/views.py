@@ -53,5 +53,3 @@ def PostDetailView(request, pk):
 
     return render(request, 'home/post_detail.html', context)
 
-def competitionDetailView(request):
-    return render(request, 'home/competition_detail.html')

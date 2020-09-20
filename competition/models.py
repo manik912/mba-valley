@@ -1,8 +1,9 @@
 from django.db import models
-from users.models import User
+from django.utils import timezone
+from user.models import User
 
 # Create your models here.
-class competition(object):
+class competition(models.Model):
 	"""docstring for competition"""
 
 	organiser 		= models.ForeignKey(User, related_name = 'organiser', on_delete = models.CASCADE, null = True)
@@ -12,20 +13,19 @@ class competition(object):
 	begin_date 		= models.DateTimeField(default = timezone.now)
 	min_size 		= models.IntegerField(default = 1)
 	max_size 		= models.IntegerField(default = 1)
-	prizes 			= models.ForeignKey(prizes, related_name = 'prize', on_delete = models.CASCADE)
 	image 			= models.ImageField(default = 'competition/default.png', upload_to = 'competition/')
 
 	def __str__(self):
 		return self.name
 
-class register(object):
+class register(models.Model):
 	"""docstring for register"""
 	event 			= models.ForeignKey(competition, related_name = 'competition', on_delete = models.CASCADE, null = True)
 	team_leader 	= models.ForeignKey(User, related_name = 'participants', on_delete = models.CASCADE, null = True)
 
-class prizes(object):
+
+class prizes(models.Model):
 	"""docstring for prizes"""
 	event 			= models.ForeignKey(competition, related_name = 'event', on_delete = models.CASCADE, null = True)
 	title 			= models.CharField(max_length = 20)
 	reward 			= models.CharField(max_length = 20)
-
