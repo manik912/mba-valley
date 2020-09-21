@@ -23,3 +23,4 @@ class UserRegistrationForm(UserCreationForm):
 	# class Meta(UserCreationForm.Meta):
 	# 	model 	= User
 	# 	fields 	= ['name','email','password1','password2']
+
