@@ -158,3 +158,11 @@ SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'nDsGE1Y9kMSNdbT-XVHjdNjK'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'guptamanik1921@gmail.com'
+EMAIL_HOST_PASSWORD = 'jeemain2019'
+
+
