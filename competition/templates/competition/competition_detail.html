@@ -87,8 +87,9 @@
 </style>
 {% endblock head %}
 {% block body %}
+<br><br><br><br><br><br><br>
 <section class="home">
-    <header><img class="bg-img" src="{% static 'home/images/competition.jpg' %}"></header>
+    <header><center><img class="bg-img" src="{{ Competition.image.url }}"></center></header>
     <div class="container" style="margin-top: 50px; max-width: 100%;">
         <div class="row" style="max-width: 100%;">
             <div class="col-md-7 col-sm-12 col-xs-12" style="position: relative;">
@@ -99,8 +100,8 @@
                         </div>
                     </div>
                     <div class="col-md-8 col-sm-12 col-xs-12">
-                        <h3>Thapar Institue of Engineering and Technology</h3>
-                        <p><i class="fas fa-calendar-check"></i><b>18 Sep'20 12:00 AM IST - 24 Sep'20 11:22 AM IST</b>
+                        <h3> {{ Competition.name }} </h3>
+                        <p><i class="fas fa-calendar-check"></i><b>{{ Competition.begin_date}} - {{ Competition.begin_date}} IST</b>
                         </p>
                         <p><i class="fas fa-map-marker-alt"></i><b>Pune</b></p>
                     </div>
@@ -109,7 +110,7 @@
             <div class="col-md-5 col-sm-12 col-xs-12" style="display: flex; justify-content: center;">
                 <div class="card-1">
                     <div style="text-align: center; padding-top: 50px;">
-                        <p style="font-size: 18px;"><i class="fas fa-users"></i><b>Team Size: 3-4 members</b></p>
+                        <p style="font-size: 18px;"><i class="fas fa-users"></i><b>Team Size: {{ Competition.min_size}}-{{ Competition.max_size}} member/s</b></p>
                     </div>
                     <a class="btn btn-primary more register-btn" href="{% url 'login' %}">
                         <div>Register Now</div>
@@ -118,7 +119,7 @@
                 </div>
                 <div class="row" style="position: absolute; bottom: 50px; text-align: center;">
                     <div class="col-lg-6 col-sm-6 col-xs-6">
-                        <h4>38</h4>
+                        <h4>{{ Competition.registered }}</h4>
                         <p>Registered</p>
                     </div>
                     <div class="col-lg-6 col-sm-6 col-xs-6">
