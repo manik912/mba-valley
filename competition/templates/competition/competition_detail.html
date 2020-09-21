@@ -136,23 +136,7 @@
                 <div class="border">
                     <div class="about-text">
                         <h3>All that you need to know about Competition</h3>
-                        <p>SCEI leverages the advanced research capabilities that Symbiosis has in the areas of
-                            Health-tech, Medical Imaging, Waste Management, AI/ML, Nano Technology, etc. to act as a
-                            catalyst of growth for technology start-ups.</p>
-                        <p>Being a part of the Symbiosis family, SCEI is well connected to the innovation and
-                            entrepreneurship ecosystem in India. SCEI provides office space, innovation lab access and
-                            mentoring support to start-ups and potential entrepreneurs.</p>
-                        <h5>SCEI provides the following support to its start-up incubatees:</h5>
-                        <ul>
-                            <li>Funding Support</li>
-                            <li>Access to Network of Experts</li>
-                            <li>Access to Technology Labs</li>
-                            <li>Funding Support</li>
-                            <li>Intellectual Property Rights</li>
-                            <li>Funding Support</li>
-                            <li>Internship Support</li>
-                            <li>Training and Workshops</li>
-                        </ul>
+                        <p>{{ Competition.about }}</p>
                     </div>
                 </div>
             </div>
@@ -167,12 +151,12 @@
                 </div>
                 <div style="display: flex; align-items: center; flex-direction:column; padding-top:10px; padding-bottom: 18px;">
                     <div style=" padding-top: 8px;">
-                        <h5><i class="fas fa-calendar-check"></i><b>18 Sep'20 12:00 AM IST</b></h5>
+                        <h5><i class="fas fa-calendar-check"></i><b>{{ Competition.last_date }} IST</b></h5>
                         <p>Registration Deadline</p>
                     </div>
                     <div style=" padding-top: 8px;">
-                        <h5><i class="fas fa-calendar-check"></i><b>24 Sep'20 11:22 AM IST</b></h5>
-                        <p>Pitch Date</p>
+                        <h5><i class="fas fa-calendar-check"></i><b>{{ Competition.event_date }} IST</b></h5>
+                        <p>Event Date</p>
                     </div>
                 </div>
             </div>
@@ -182,9 +166,9 @@
                 </div>
                 <div style="display: flex; align-items: center; flex-direction:column; padding-top:10px; padding-bottom: 18px;">
                     <div style=" padding-top: 8px;">
-                        <h5><i class="fas fa-users-cog"></i><b>Mr. ABCDEF IJKL</b></h5>
-                        <a>heyabc.321@gmail.com</a><br><br>
-                        <a>+91 1234567890</a>
+                        <h5><i class="fas fa-users-cog"></i><b>{{ Competition.organiser.name }}</b></h5>
+                        <a>{{ Competition.organiser.email }}</a><br><br>
+                        <a>{{ Competition.organiser.contact_no }}</a>
                     </div>
                 </div>
             </div>
@@ -208,8 +192,11 @@
                 <div class="border">
                     <div class="about-text">
                         <h3><i class="fas fa-award"></i>Rewards and Prizes</h3>
-                        <p>The selected startup idea will be incubated in Symbiosis SCEI and provided support for
-                            Mentorship, Technical Expertise, etc. to commercialize their startup.</p>
+                        <ul>
+                            {% for Prize in Prizes %}
+                            <li> {{ Prize.title }} - {{ Prize.reward }} </li>
+                            {% endfor %}
+                        </ul>
                     </div>
                 </div>
             </div>
