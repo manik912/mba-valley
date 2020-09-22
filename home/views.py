@@ -5,13 +5,56 @@ from .models import Post
 # Create your views here.
 def home(request):
     posts = Post.objects.order_by('-date_published')
-    popular = Post.objects.filter(popular=True)
+    latest_popular = Post.objects.filter(latest_popular=True)
+    mba_popular = Post.objects.filter(mba_popular=True)
+    startup_popular = Post.objects.filter(startup_popular=True)
+    latest_story = Post.objects.filter(latest_story=True)
+    mba_story = Post.objects.filter(mba_story=True)
+    startup_story = Post.objects.filter(startup_story=True)
 
     context = {
         'posts': posts,
-        'popular':popular
+        'latest_popular':latest_popular,
+        'mba_popular':mba_popular,
+        'startup_popular':startup_popular,
+        'latest_story': latest_story,
+        'mba_story': mba_story,
+        'startup_story': startup_story
     }
     return render(request, 'home/home.html', context)
+
+def latest_story(request):
+    posts = Post.objects.order_by('-date_published')
+    latest_story = Post.objects.filter(latest_story=True)
+
+    context = {
+        'posts': posts,
+        'latest_story': latest_story
+    }
+
+    return render(request, 'home/latest stories.html', context)
+
+def mba_story(request):
+    posts = Post.objects.order_by('-date_published')
+    mba_story = Post.objects.filter(mba_story=True)
+
+    context = {
+        'posts': posts,
+        'mba_story': mba_story
+    }
+
+    return render(request, 'home/mba stories.html', context)
+
+def startup_story(request):
+    posts = Post.objects.order_by('-date_published')
+    startup_story = Post.objects.filter(startup_story=True)
+
+    context = {
+        'posts': posts,
+        'startup_story': startup_story
+    }
+
+    return render(request, 'home/startup stories.html', context)
 
 # class SearchView(ListView):
 #     model = Post
