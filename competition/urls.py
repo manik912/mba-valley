@@ -6,6 +6,7 @@ from .views import competitionDetailView, CompetitionListView, submit
 
 urlpatterns = [
     path('competition/<int:pk>/detail/',            views.competitionDetailView,        name='competition-detail'),
+    path('competition/<int:pk>/submit/',            views.submit,        name='submit'),
     path('competition/',                   views.CompetitionListView,                  name='competition'),
-    path('submit/',                        views.submit,                       name='submit')
+    # path('submit/',                        views.submit,                       name='submit')
 ]

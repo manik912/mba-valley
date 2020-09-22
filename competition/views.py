@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from .models import competition, prizes
 from .models import prizes as Prizes
+from .forms import SubmitForm
+
 
 # Create your views here.
 def competitionDetailView(request, pk):
@@ -22,10 +24,12 @@ def CompetitionListView(request):
 	return render(request, 'competition/competition.html', context)
 
 
-def submit(request):
-	# if request.methord == 'POST':
-	# 	form = SubmitForm(request.POST, request.FILES)
-	# 	if form.is_valid():
-	# 		form.save()
-				
-	return render(request, 'competition/submit.html')
+def submit(request, pk):
+	comp = competition.objects.filter(id=pk).first()
+	if request.method == 'POST':
+		form = SubmitForm(request.POST, request.FILES)
+		if form.is_valid():
+			form.instance.event = comp
+			form.instance.leader = request.user
+			form.save()	
+			return render(request, 'competition/submit.html')
