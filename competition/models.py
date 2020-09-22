@@ -16,6 +16,7 @@ class competition(models.Model):
 	max_size 		= models.IntegerField(default = 1)
 	image 			= models.ImageField(default = 'competition/default.png', upload_to = 'competition/')
 	registered 		= models.IntegerField(default = 0)
+	competition_popular         = models.BooleanField(default = False)
 
 	def __str__(self):
 		return self.name

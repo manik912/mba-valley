@@ -6,10 +6,12 @@ from .models import prizes as Prizes
 def competitionDetailView(request):
 	
 	Competition = competition.objects.filter(id=1).first()
+	competition_popular     = competition.objects.filter(popular=True)
 
 	context = {
 		'Competition' : Competition,
-		'Prizes' : Prizes.objects.filter(event = Competition)
+		'Prizes' : Prizes.objects.filter(event = Competition),
+		'competition_popular':competition_popular
 	}
 
 	print("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$")
