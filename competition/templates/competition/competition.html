@@ -31,7 +31,7 @@
                                         <p>{{ Competition.about|truncatechars:100 }} </p>
                                         <footer>
                                             {% if user.is_authenticated %}
-                                            <a class="btn btn-primary more" href="{% url 'Competition-detail' %}">
+                                            <a class="btn btn-primary more" href="{% url 'competition-detail' Competition.id %}">
                                                 <div>More</div>
                                                 <div><i class="ion-ios-arrow-thin-right"></i></div>
                                             </a>
