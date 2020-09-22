@@ -32,3 +32,9 @@ class prizes(models.Model):
 	event 			= models.ForeignKey(competition, related_name = 'event', on_delete = models.CASCADE, null = True)
 	title 			= models.CharField(max_length = 20)
 	reward 			= models.CharField(max_length = 20)
+
+class submit(models.Model):
+	"""docstring for submit"""
+	event 			= models.ForeignKey(competition, related_name= 'submit_competition', on_delete = models.CASCADE)
+	leader 			= models.ForeignKey(User, related_name = 'leader', on_delete = models.CASCADE)
+	file 			= models.FileField(upload_to = 'file/')
