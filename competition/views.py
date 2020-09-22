@@ -17,3 +17,14 @@ def competitionDetailView(request):
 	print("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$")
 
 	return render(request, 'competition/competition_detail.html', context)
+
+def CompetitionListView(request):
+	Competition = competition.objects.all()
+	context = {
+		'Competition' : Competition
+	}
+	return render(request, 'competition/competition.html', context)
+
+
+def submit(request):
+	return render(request, 'competition/submit.html')
