@@ -12,3 +12,6 @@ class Post(models.Model):
     
     def __str__(self):
         return self.title
+
+class chek(models.Model):
+    date = models.DateTimeField(auto_now_add=False, blank=True, null=True)
