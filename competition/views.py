@@ -3,20 +3,14 @@ from .models import competition, prizes
 from .models import prizes as Prizes
 
 # Create your views here.
-def competitionDetailView(request):
+def competitionDetailView(request, pk):
 	
-	Competition = competition.objects.filter(id=1).first()
-	competition_popular     = competition.objects.filter(popular=True)
+	Competition = competition.objects.filter(id=pk).first()
 
 	context = {
 		'Competition' : Competition,
-		'Prizes' : Prizes.objects.filter(event = Competition),
-		'competition_popular':competition_popular
+		'Prizes' : Prizes.objects.filter(event = Competition)
 	}
-
-	print("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$")
-	print(Competition.organiser.name)
-	print("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$")
 
 	return render(request, 'competition/competition_detail.html', context)
 
