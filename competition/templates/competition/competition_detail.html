@@ -120,6 +120,7 @@
                     
                 </div>
                 <div class="row" style="position: absolute; bottom: 50px; text-align: center;">
+                    <div id="preregister">
                     <div class="col-lg-4 col-sm-6 col-xs-6">
                         <h4>{{ Competition.registered }}</h4>
                         <p>Registered</p>
@@ -133,9 +134,11 @@
                         <h4 id="minutes"> </h4>
                         <p>Min. Left</p>
                     </div>
+                    </div>
                         <script type="text/javascript">
                             function countdown() {
                                 var now = new Date();
+                                var startDate = new Date({{ Competition.begin_year }}, {{ Competition.begin_month }} - 1, {{ Competition.begin_day }});
                                 var endDate = new Date({{ Competition.last_year }}, {{ Competition.last_month }} - 1, {{ Competition.last_day }});
              
                                 var currentTime = now.getTime();
@@ -156,8 +159,17 @@
                                 if(now >= endDate){
                                     header.innerHTML = "Registration Closed"
                                     document.getElementById("button").remove();
-                                } else{
+                                }
+
+                                if((now > startDate) && (now < endDate)){
                                     document.getElementById("abcd").remove();
+                                }
+                                    
+        
+                                if(now < startDate){
+                                    header.innerHTML = "Registration will start on {{ Competition.begin_day }}-{{ Competition.begin_month }}-{{ Competition.begin_year }}"
+                                    document.getElementById("button").remove();
+                                    document.getElementById("preregister").remove();
                                 }
 
 
@@ -225,16 +237,64 @@
                 </div>
             </div>
             <div class="col-lg-4 col-md-4 col-sm-12">
-                <div class="important-heading">
-                    <h4>Detailed Document</h4>
+                <div id="presub" class="important-heading">
+                    <h4></h4>
                 </div>
                 <div style="display: flex; align-items: center; flex-direction:column; padding-top:10px; padding-bottom: 18px;">
-                    <a class="btn btn-primary more" href="{% url 'submit' Competition.id %}">
-                        <div>Download PDF</div>
-                        <div><i class="ion-ios-arrow-thin-right"></i></div>
-                    </a>
+                    <div id="xyz">
+                        <a class="btn btn-primary more" href="{% url 'submit' Competition.id %}">
+                            <div>Download PDF</div>
+                            <div><i class="ion-ios-arrow-thin-right"></i></div>
+                        </a>
+                    </div>
                 </div>
             </div>
+            <script type="text/javascript">
+                function countdown() {
+                    var now = new Date();
+                    var openDate = new Date({{ Competition.open_year }}, {{ Competition.open_month }} - 1, {{ Competition.open_day }});
+                    var closeDate = new Date({{ Competition.close_year }}, {{ Competition.close_month }} - 1, {{ Competition.close_day }});
+ 
+                    var currentTime = now.getTime();
+                    var closeTime = closeDate.getTime();
+ 
+                    var timeLeft = closeTime - currentTime;
+ 
+                    var s = Math.floor(timeLeft / 1000);
+                    var m = Math.floor(s / 60) % 60;
+                    var h = Math.floor(s / 60 / 60);
+                    var d = Math.floor(s / 60 / 60 / 24);
+ 
+                    if (h < "10") { h = "0" + h; }
+                    if (m < "10") { m = "0" + m; }
+                    if (s < "10") { s = "0" + s; }
+
+                    var head = document.getElementById("presub");
+                    if(now < openDate){
+                        head.innerHTML = "The Questionaire will be uploaded soon."
+                        document.getElementById("xyz").remove();
+                    }
+
+                    if((now > openDate) && (now < closeDate)){
+                        document.getElementById("presub").innerHTML = "Detailed Document and Submission"
+                    }
+                        
+
+                    if(now > closeDate){
+                        document.getElementById("presub").innerHTML = "Submission is Closed."
+                        document.getElementById("xyz").remove();
+                    }
+
+
+
+ 
+                    setTimeout(countdown, 1000);
+
+                    
+ 
+                }
+                countdown();
+            </script>
         </div>
     </div>
 
