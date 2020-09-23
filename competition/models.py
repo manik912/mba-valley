@@ -64,7 +64,7 @@ class register(models.Model):
 	"""docstring for register"""
 	event 			= models.ForeignKey(competition, related_name = 'competition', on_delete = models.CASCADE, null = True)
 	team_leader 	= models.ForeignKey(User, related_name = 'participants', on_delete = models.CASCADE, null = True)
-	clg 			= models.CharField(max_length = 50, default = "your college")
+	College 		= models.CharField(max_length = 50, default = "Enter Your College Name")
 
 
 class prizes(models.Model):
