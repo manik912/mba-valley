@@ -50,4 +50,7 @@ def save(request):
 			form.instance.event = comp
 			form.instance.lead = request.user
 			form.save()
-			return render('competition/save.html')
+			return render(request, 'competition/save.html')
+
+def competitionRegister(request):
+	return render(request, 'competition/register-competition.html')
