@@ -14,6 +14,7 @@ class competition(models.Model):
     last_date 			= models.DateTimeField(default = timezone.now)
     begin_date 			= models.DateTimeField(default = timezone.now)
     event_date 			= models.DateTimeField(default = timezone.now)
+    event_end           = models.DateTimeField(default = timezone.now)
     min_size 			= models.IntegerField(default = 1)
     max_size 			= models.IntegerField(default = 1)
     image 				= models.ImageField(default = 'competition/default.png', upload_to = 'competition/')
@@ -32,6 +33,32 @@ class competition(models.Model):
     def last_day(self):
         return self.last_date.strftime('%d')
 
+    def begin_year(self):
+        return self.begin_date.strftime('%Y')
+
+    def begin_month(self):
+        return self.begin_date.strftime('%m')
+
+    def begin_day(self):
+        return self.begin_date.strftime('%d')
+
+    def open_year(self):
+        return self.event_date.strftime('%Y')
+
+    def open_month(self):
+        return self.event_date.strftime('%m')
+
+    def open_day(self):
+        return self.event_date.strftime('%d')
+
+    def close_year(self):
+        return self.event_end.strftime('%Y')
+
+    def close_month(self):
+        return self.event_end.strftime('%m')
+
+    def close_day(self):
+        return self.event_end.strftime('%d')
 
 class register(models.Model):
 	"""docstring for register"""
