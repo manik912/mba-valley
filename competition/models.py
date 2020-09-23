@@ -4,22 +4,32 @@ from user.models import User
 
 # Create your models here.
 class competition(models.Model):
-	"""docstring for competition"""
+    """docstring for competition"""
 
-	organiser 			= models.ForeignKey(User, related_name = 'organiser', on_delete = models.CASCADE, null = True)
-	name 				= models.CharField(max_length = 20)
-	about 				= models.CharField(max_length = 200)
-	last_date 			= models.DateTimeField(default = timezone.now)
-	begin_date 			= models.DateTimeField(default = timezone.now)
-	event_date 			= models.DateTimeField(default = timezone.now)
-	min_size 			= models.IntegerField(default = 1)
-	max_size 			= models.IntegerField(default = 1)
-	image 				= models.ImageField(default = 'competition/default.png', upload_to = 'competition/')
-	registered 			= models.IntegerField(default = 0)
-	competition_popular = models.BooleanField(default = False)
+    organiser 			= models.ForeignKey(User, related_name = 'organiser', on_delete = models.CASCADE, null = True)
+    name 				= models.CharField(max_length = 20)
+    about 				= models.CharField(max_length = 200)
+    last_date 			= models.DateTimeField(default = timezone.now)
+    begin_date 			= models.DateTimeField(default = timezone.now)
+    event_date 			= models.DateTimeField(default = timezone.now)
+    min_size 			= models.IntegerField(default = 1)
+    max_size 			= models.IntegerField(default = 1)
+    image 				= models.ImageField(default = 'competition/default.png', upload_to = 'competition/')
+    registered 			= models.IntegerField(default = 0)
+    competition_popular = models.BooleanField(default = False)
 
-	def __str__(self):
-		return self.name
+    def __str__(self):
+        return self.name
+    
+    def last_year(self):
+        return self.last_date.strftime('%Y')
+
+    def last_month(self):
+        return self.last_date.strftime('%m')
+
+    def last_day(self):
+        return self.last_date.strftime('%d')
+
 
 class register(models.Model):
 	"""docstring for register"""
