@@ -13,6 +13,6 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='register',
             name='clg',
-            field=models.CharField(max_length=50, null=True),
+            field=models.CharField(default='your college', max_length=50),
         ),
     ]
