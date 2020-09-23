@@ -38,6 +38,53 @@
         <div class="row">
             <!--Latest Stories-->
             <div class="col-md-8 col-sm-12 col-xs-12">
+                <h1>asdfg</h1>
+            </div>
+
+            <!--Sidebar-competition-->
+            <div class="col-xs-6 col-md-4 sidebar" id="sidebar">
+                <div class="sidebar-title for-tablet">Sidebar</div>
+                <aside>
+                    <h1 class="aside-title">Competitions <a href="{% url 'competition' %}" class="all">See All <i
+                                class="ion-ios-arrow-right"></i></a></h1>
+                    <div class="aside-body">
+                        {% if competition_popular %}
+                        {% for competition in competition_popular %}
+                        <article class="article-mini">
+                            <div class="inner">
+                                <figure>
+                                    <a href="articles/article.html">
+                                        <img src="{{ post.blog_image.url }}" alt="Sample Article">
+                                    </a>
+                                </figure>
+                                <div class="padding">
+                                    <h1><a href="articles/article.html">{{ post.title }}</a></h1>
+                                </div>
+                            </div>
+                        </article>
+                        {% endfor %}
+                        {% endif %}
+                
+                    </div>
+                </aside>
+                <aside>
+                    <h1 class="aside-title">Videos</h1>
+                    <div class="carousel-nav" id="video-list-nav">
+                        <div class="prev"><i class="ion-ios-arrow-left"></i></div>
+                        <div class="next"><i class="ion-ios-arrow-right"></i></div>
+                    </div>
+
+                    <div class="aside-body">
+                        <ul class="video-list" data-youtube='"carousel":true, "nav": "#video-list-nav"'>
+                            <li><a data-youtube-id="PJutG613i7E" data-action="new_tab"></a></li>
+                            <li><a data-youtube-id="PJutG613i7E" data-action="new_tab"></a></li>
+                            <li><a data-youtube-id="PJutG613i7E" data-action="new_tab"></a></li>
+                        </ul>
+                    </div>
+                </aside>
+            </div>
+
+            <div class="col-md-8 col-sm-12 col-xs-12">
                 <h5 class="aside-title">Latest Stories <span style="position: absolute; right: 20px;"><a href="{% url 'latest-stories' %}"
                             class="all">See All <i class="ion-ios-arrow-right"></i></a></span></h5>
                 <hr style="width: 5%; border: 2px solid #FC624D; text-align:left;margin-left:0">
@@ -97,49 +144,6 @@
                         </div>
                     </aside>
                 </div>
-            </div>
-
-            <!--Sidebar-competition-->
-            <div class="col-xs-6 col-md-4 sidebar" id="sidebar">
-                <div class="sidebar-title for-tablet">Sidebar</div>
-                <aside>
-                    <h1 class="aside-title">Competitions <a href="{% url 'competition' %}" class="all">See All <i
-                                class="ion-ios-arrow-right"></i></a></h1>
-                    <div class="aside-body">
-                        {% if competition_popular %}
-                        {% for competition in competition_popular %}
-                        <article class="article-mini">
-                            <div class="inner">
-                                <figure>
-                                    <a href="articles/article.html">
-                                        <img src="{{ post.blog_image.url }}" alt="Sample Article">
-                                    </a>
-                                </figure>
-                                <div class="padding">
-                                    <h1><a href="articles/article.html">{{ post.title }}</a></h1>
-                                </div>
-                            </div>
-                        </article>
-                        {% endfor %}
-                        {% endif %}
-                
-                    </div>
-                </aside>
-                <aside>
-                    <h1 class="aside-title">Videos</h1>
-                    <div class="carousel-nav" id="video-list-nav">
-                        <div class="prev"><i class="ion-ios-arrow-left"></i></div>
-                        <div class="next"><i class="ion-ios-arrow-right"></i></div>
-                    </div>
-
-                    <div class="aside-body">
-                        <ul class="video-list" data-youtube='"carousel":true, "nav": "#video-list-nav"'>
-                            <li><a data-youtube-id="PJutG613i7E" data-action="new_tab"></a></li>
-                            <li><a data-youtube-id="PJutG613i7E" data-action="new_tab"></a></li>
-                            <li><a data-youtube-id="PJutG613i7E" data-action="new_tab"></a></li>
-                        </ul>
-                    </div>
-                </aside>
             </div>
 
             <!--Startup Stories-->

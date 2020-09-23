@@ -1,6 +1,8 @@
 from django.db import models
 from django.utils import timezone
 from user.models import User
+from phone_field import PhoneField
+
 
 # Create your models here.
 class competition(models.Model):
@@ -35,7 +37,7 @@ class register(models.Model):
 	"""docstring for register"""
 	event 			= models.ForeignKey(competition, related_name = 'competition', on_delete = models.CASCADE, null = True)
 	team_leader 	= models.ForeignKey(User, related_name = 'participants', on_delete = models.CASCADE, null = True)
-	clg 			= models.CharField(max_length = 50)
+	clg 			= models.CharField(max_length = 50, default = "your college")
 
 
 class prizes(models.Model):
@@ -49,3 +51,12 @@ class submit(models.Model):
 	event 			= models.ForeignKey(competition, related_name= 'submit_competition', on_delete = models.CASCADE)
 	leader 			= models.ForeignKey(User, related_name = 'leader', on_delete = models.CASCADE)
 	file 			= models.FileField(upload_to = 'file/')
+
+class Team(models.Model):
+	"""docstring for Team"""
+	event 			= models.ForeignKey(competition, related_name = 'team_event', on_delete= models.CASCADE)
+	lead 			= models.ForeignKey(User, related_name = 'team_leader', on_delete= models.CASCADE)
+	member_name 	= models.CharField(max_length = 50)
+	college			= models.CharField(max_length = 100)
+	contact_no 		= PhoneField(blank=False, null=False, help_text='Add country code before the contact no.')
+	email 			= models.EmailField(max_length=254)
