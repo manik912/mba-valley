@@ -65,7 +65,7 @@
 
 {% endblock head %}
 {% block body %}
-<section class="home" style="margin-top: 200px;">
+<section class="home">
     <div class="container">
         <div class="row">
             <div class="col-md-12 col-sm-12 col-xs-12 box-center">
@@ -75,12 +75,12 @@
                   <br>
                   <div class="drop-zone">
                       <span class="drop-zone__prompt">Drop file here or click to upload</span>
-                      {{ form }}
-
-                      <!-- <input type="file" name="myFile" class="drop-zone__input"> -->
+                      <!-- {{ form }} -->
+                      <!-- <label for="file">Your submission: </label> -->
+                      <input id="file" type="file" name="file" class="drop-zone__input">
                   </div>
                   <br> <br>
-                  <input style="background-color: rgb(47, 146, 187)" type="submit" value="Submit" class="btn btn-primary pull-right" />
+                  <input class="btn btn-primary more" type="submit" value="Submit" class="btn btn-primary pull-right" />
 <!--                   <a class="btn btn-primary more" href="">
                       <div><inputtype="submit" value="Login" class="btn btn-primary pull-right" />
                       </div>
