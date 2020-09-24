@@ -68,6 +68,11 @@
 <section class="home">
     <div class="container">
         <div class="row">
+          <div>
+            <center>
+              <h2>Download the Questions from <span> <a href="{{ comp.file.url }}">here</a></span> </h2>
+            </center>
+          </div>
             <div class="col-md-12 col-sm-12 col-xs-12 box-center">
                 <h2>Your Submission:</h2>
                 <form method="POST" enctype="multipart/form-data">
@@ -75,12 +80,12 @@
                   <br>
                   <div class="drop-zone">
                       <span class="drop-zone__prompt">Drop file here or click to upload</span>
-                      {{ form }}
-
-                      <!-- <input type="file" name="myFile" class="drop-zone__input"> -->
+                      <!-- {{ form }} -->
+                      <!-- <label for="file">Your submission: </label> -->
+                      <input id="file" type="file" name="file" class="drop-zone__input">
                   </div>
                   <br> <br>
-                  <input style="background-color: rgb(47, 146, 187)" type="submit" value="Submit" class="btn btn-primary pull-right" />
+                  <input class="btn btn-primary more" type="submit" value="Submit" class="btn btn-primary pull-right" />
 <!--                   <a class="btn btn-primary more" href="">
                       <div><inputtype="submit" value="Login" class="btn btn-primary pull-right" />
                       </div>
