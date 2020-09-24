@@ -45,22 +45,20 @@
                     <h1 class="aside-title">Competitions <a href="{% url 'competition' %}" class="all">See All <i
                                 class="ion-ios-arrow-right"></i></a></h1>
                     <div class="aside-body">
-                        {% if competition_popular %}
-                        {% for competition in competition_popular %}
+                        {% for competition in comp %}
                         <article class="article-mini">
                             <div class="inner">
                                 <figure>
-                                    <a href="{% url 'competition-detail' %}">
-                                        <img src="{{ competition.blog_image.url }}" alt="Sample Article">
+                                    <a href="{% url 'competition-detail' competition.id %}">
+                                        <img src="{{ competition.image.url }}" alt="Sample Article">
                                     </a>
                                 </figure>
                                 <div class="padding">
-                                    <h1><a href="articles/article.html">{{ competition.name }}</a></h1>
+                                    <h1><a href="{% url 'competition-detail' competition.id %}">{{ competition.name }}</a></h1>
                                 </div>
                             </div>
                         </article>
                         {% endfor %}
-                        {% endif %}
 
                     </div>
                 </aside>

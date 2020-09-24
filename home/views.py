@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.views.generic import DetailView, ListView
 from .models import Post
+from competition.models import competition
 
 # Create your views here.
 def home(request):
@@ -11,6 +12,7 @@ def home(request):
     latest_story = Post.objects.filter(latest_story=True)
     mba_story = Post.objects.filter(mba_story=True)
     startup_story = Post.objects.filter(startup_story=True)
+    comp = competition.objects.filter(competition_popular=True)
 
     context = {
         'posts': posts,
@@ -19,7 +21,8 @@ def home(request):
         'startup_popular':startup_popular,
         'latest_story': latest_story,
         'mba_story': mba_story,
-        'startup_story': startup_story
+        'startup_story': startup_story,
+        'comp':comp
     }
     return render(request, 'home/home.html', context)
 
