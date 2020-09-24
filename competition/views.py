@@ -1,7 +1,7 @@
 from django.shortcuts import render, HttpResponseRedirect
 from .models import competition, prizes
 from .models import prizes as Prizes
-from .forms import SubmitForm, TeamForm
+from .forms import SubmitForm, TeamForm, Register
 
 
 # Create your views here.
@@ -41,13 +41,19 @@ def submit(request, pk):
 	}
 	return render(request, 'competition/submit.html', context)
 
-
-def save(request):
-	comp = competition.objects.filter(id=1).first()
+def competitionRegister(request, pk):
+	compe = competition.objects.filter(id=pk).first()
+	user = request.user
 	if request.method == 'POST':
-		form = TeamForm(request.POST)
-		if form.is_valid():
-			form.instance.event = comp
-			form.instance.lead = request.user
-			form.save()
-			return render('competition/save.html')
+		form = Register(request.POST)
+		form.instance.event = come
+		form.instance.team_leader = user
+		form.save()
+	else:
+		form = Register()		
+	context = {
+		'user' : user,
+		'form' : form,
+	}
+
+	return render(request, 'competition/register-competition.html', context)
