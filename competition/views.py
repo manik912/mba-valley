@@ -46,7 +46,7 @@ def competitionRegister(request, pk):
 	user = request.user
 	if request.method == 'POST':
 		form = Register(request.POST)
-		form.instance.event = come
+		form.instance.event = compe
 		form.instance.team_leader = user
 		form.save()
 	else:
