@@ -38,6 +38,7 @@ def submit(request, pk):
 		form = SubmitForm()
 	context = {
 		'form' : form,
+		'comp' : comp
 	}
 	return render(request, 'competition/submit.html', context)
 
@@ -48,6 +49,8 @@ def competitionRegister(request, pk):
 		form = Register(request.POST)
 		form.instance.event = compe
 		form.instance.team_leader = user
+		compe.registered = compe.registered + 1
+		compe.save()
 		form.save()
 	else:
 		form = Register()		
@@ -55,5 +58,9 @@ def competitionRegister(request, pk):
 		'user' : user,
 		'form' : form,
 	}
+
+	print("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$")
+	print(compe.registered)
+	print("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$")
 
 	return render(request, 'competition/register-competition.html', context)
