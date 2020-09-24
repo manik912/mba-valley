@@ -20,6 +20,7 @@ class competition(models.Model):
     image 				= models.ImageField(default = 'competition/default.png', upload_to = 'competition/')
     registered 			= models.IntegerField(default = 0)
     competition_popular = models.BooleanField(default = False)
+    file                = models.FileField(upload_to = 'file/', default = 'competition/default.png')
 
     def __str__(self):
         return self.name
@@ -77,7 +78,7 @@ class submit(models.Model):
 	"""docstring for submit"""
 	event 			= models.ForeignKey(competition, related_name= 'submit_competition', on_delete = models.CASCADE)
 	leader 			= models.ForeignKey(User, related_name = 'leader', on_delete = models.CASCADE)
-	file 			= models.FileField(upload_to = 'file/')
+	file 			= models.FileField(upload_to = 'file_submit/')
 
 class Team(models.Model):
 	"""docstring for Team"""
