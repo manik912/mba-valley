@@ -1,4 +1,4 @@
-from django.shortcuts import render, HttpResponseRedirect
+from django.shortcuts import render, HttpResponseRedirect, redirect
 from .models import competition, prizes
 from .models import prizes as Prizes
 from .forms import SubmitForm, TeamForm, Register
@@ -49,6 +49,7 @@ def competitionRegister(request, pk):
 		form.instance.event = compe
 		form.instance.team_leader = user
 		form.save()
+		return redirect('https://github.com/tanya1810/mba-valley')
 	else:
 		form = Register()		
 	context = {
