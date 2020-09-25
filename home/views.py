@@ -13,6 +13,7 @@ def home(request):
     mba_story = Post.objects.filter(mba_story=True)
     startup_story = Post.objects.filter(startup_story=True)
     comp = competition.objects.filter(competition_popular=True)
+    trending_story = Post.objects.filter(trending_story=True)
 
     context = {
         'posts': posts,
@@ -22,7 +23,8 @@ def home(request):
         'latest_story': latest_story,
         'mba_story': mba_story,
         'startup_story': startup_story,
-        'comp':comp
+        'comp':comp,
+        'trending_story':trending_story
     }
     return render(request, 'home/home.html', context)
 

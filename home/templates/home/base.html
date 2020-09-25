@@ -41,15 +41,15 @@
 			<div class="firstbar">
 				<div class="container">
 					<div class="row">
-						<div class="col-md-3 col-sm-12">
-							<div class="brand ">
-								<a href="index.html">
+						<div class="col-sm-4">
+							<div class="brand">
+								<a href="{% url 'home' %}">
 									<img src="{% static 'home/images/logo.jpg' %}" alt="Mba Valley Logo" class="logo">
 								</a>
 							</div>	
 							<!-- <div class="tagline">Let's Grow Together</div>					 -->
 						</div>
-						<div class="col-md-6 col-sm-12">
+						<div class="col-sm-4">
 							<form class="search" method="GET" autocomplete="off" action="{% url 'search' %}">
 								<div class="form-group">
 									<div class="input-group">
@@ -58,10 +58,11 @@
 											<button class="btn btn-primary" type="submit"><i class="ion-search"></i></button>
 										</div>
 									</div>
+									<div class="tagline"></div>	
 								</div>
 							</form>								
 						</div>
-						<div class="col-md-3 col-sm-12 text-right">
+						<div class="col-sm-4">
 							{% if user.is_authenticated %}
 								<ul class="nav-icons">
 									<li><div style="font-size: 16px;"><b>Hi {{ user.name }}</b></div></li>
@@ -69,7 +70,7 @@
 								</ul>
 							{% else %}
 								<ul class="nav-icons">
-									<li><a href="{% url 'register' %}"><i class="ion-person-add"></i><div style="font-size: 16px;">Register</div></a></li>
+									<li><a href="{% url 'register' %}"><i class="ion-person-add"></i><div style="font-size: 16px;">PUBLISH OPPORTUNITY</div></a></li>
 									<li><a href="{% url 'login' %}"><i class="ion-person"></i><div style="font-size: 16px;">Login</div></a></li>
 								</ul>
 							{% endif %}

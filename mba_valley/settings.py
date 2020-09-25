@@ -25,7 +25,7 @@ SECRET_KEY = '9_krbx)fn2=t05kt3iwyu!8crq+puw-_l*$@1c)k)u@suraz03'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['mbavalley.herokuapp.com', '127.0.0.1']
 
 
 # Application definition
