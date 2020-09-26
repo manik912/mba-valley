@@ -21,3 +21,7 @@ class Post(models.Model):
 
 class chek(models.Model):
     date = models.DateTimeField(auto_now_add=False, blank=True, null=True)
+
+class carousel(models.Model):
+    """docstring for carousel"""
+    image               = models.ImageField(default = 'home_carousel/default.png', upload_to = 'home_carousel/')
