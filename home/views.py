@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views.generic import DetailView, ListView
-from .models import Post
+from .models import Post, carousel
 
 # Create your views here.
 def home(request):
@@ -11,6 +11,7 @@ def home(request):
     latest_story = Post.objects.filter(latest_story=True)
     mba_story = Post.objects.filter(mba_story=True)
     startup_story = Post.objects.filter(startup_story=True)
+    carousel_image = carousel.objects.all()
 
     context = {
         'posts': posts,
@@ -19,7 +20,8 @@ def home(request):
         'startup_popular':startup_popular,
         'latest_story': latest_story,
         'mba_story': mba_story,
-        'startup_story': startup_story
+        'startup_story': startup_story,
+        'carousel_image': carousel_image
     }
     return render(request, 'home/home.html', context)
 
