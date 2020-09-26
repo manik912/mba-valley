@@ -14,6 +14,7 @@ class Post(models.Model):
     latest_story = models.BooleanField(default = False)
     mba_story = models.BooleanField(default = False)
     startup_story = models.BooleanField(default = False)
+    trending_story = models.BooleanField(default=False)
     
     def __str__(self):
         return self.title
