@@ -16,6 +16,7 @@ def home(request):
     carousel_image = carousel.objects.all()
     comp = competition.objects.filter(competition_popular=True)
     trending_story = Post.objects.filter(trending_story=True)
+    slider_image = Slider.objects.all()
 
     context = {
         'posts': posts,
@@ -27,7 +28,8 @@ def home(request):
         'startup_story': startup_story,
         'carousel_image': carousel_image
         'comp':comp,
-        'trending_story':trending_story
+        'trending_story':trending_story,
+        'slider_image':slider_image
     }
     return render(request, 'home/home.html', context)
 

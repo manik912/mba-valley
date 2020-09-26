@@ -11,55 +11,56 @@ class competition(models.Model):
     organiser 			= models.ForeignKey(User, related_name = 'organiser', on_delete = models.CASCADE, null = True)
     name 				= models.CharField(max_length = 20)
     about 				= models.CharField(max_length = 200)
-    last_date 			= models.DateTimeField(default = timezone.now)
-    begin_date 			= models.DateTimeField(default = timezone.now)
-    event_date 			= models.DateTimeField(default = timezone.now)
-    event_end           = models.DateTimeField(default = timezone.now)
+    registration_open 			= models.DateTimeField(default = timezone.now)
+    registration_deadline 			= models.DateTimeField(default = timezone.now)
+    submission_start 			= models.DateTimeField(default = timezone.now)
+    submission_close           = models.DateTimeField(default = timezone.now)
     min_size 			= models.IntegerField(default = 1)
     max_size 			= models.IntegerField(default = 1)
     image 				= models.ImageField(default = 'competition/default.png', upload_to = 'competition/')
     registered 			= models.IntegerField(default = 0)
     competition_popular = models.BooleanField(default = False)
     file                = models.FileField(upload_to = 'file/', default = 'competition/default.png')
+    is_published        = models.BooleanField(default = False) 
 
     def __str__(self):
         return self.name
     
     def last_year(self):
-        return self.last_date.strftime('%Y')
+        return self.registration_deadline.strftime('%Y')
 
     def last_month(self):
-        return self.last_date.strftime('%m')
+        return self.registration_deadline.strftime('%m')
 
     def last_day(self):
-        return self.last_date.strftime('%d')
+        return self.registration_deadline.strftime('%d')
 
     def begin_year(self):
-        return self.begin_date.strftime('%Y')
+        return self.registration_open.strftime('%Y')
 
     def begin_month(self):
-        return self.begin_date.strftime('%m')
+        return self.registration_open.strftime('%m')
 
     def begin_day(self):
-        return self.begin_date.strftime('%d')
+        return self.registration_open.strftime('%d')
 
     def open_year(self):
-        return self.event_date.strftime('%Y')
+        return self.submission_start.strftime('%Y')
 
     def open_month(self):
-        return self.event_date.strftime('%m')
+        return self.submission_start.strftime('%m')
 
     def open_day(self):
-        return self.event_date.strftime('%d')
+        return self.submission_start.strftime('%d')
 
     def close_year(self):
-        return self.event_end.strftime('%Y')
+        return self.submission_close.strftime('%Y')
 
     def close_month(self):
-        return self.event_end.strftime('%m')
+        return self.submission_close.strftime('%m')
 
     def close_day(self):
-        return self.event_end.strftime('%d')
+        return self.submission_close.strftime('%d')
 
 class register(models.Model):
 	"""docstring for register"""

@@ -1,7 +1,9 @@
 from django.shortcuts import render, HttpResponseRedirect, redirect
+from django.contrib import messages
+from django.urls import reverse
 from .models import competition, prizes
 from .models import prizes as Prizes
-from .forms import SubmitForm, TeamForm, Register
+from .forms import SubmitForm, TeamForm, Register, competitionCreateForm
 
 
 # Create your views here.
@@ -41,6 +43,23 @@ def submit(request, pk):
 		'comp' : comp
 	}
 	return render(request, 'competition/submit.html', context)
+
+def competitionCreateView(request):
+    if request.method == 'POST':
+        form = competitionCreateForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            messages.success(
+                request, 'Your submission has been sent to our team for review. You will be notified via e-mail if it is published.')
+
+            return HttpResponseRedirect(reverse('competition'))
+    else:
+        form = competitionCreateForm()
+    context = {
+        'form': form,
+    }
+    return render(request, 'competition/competition_form.html', context)
+
 
 def competitionRegister(request, pk):
 	compe = competition.objects.filter(id=pk).first()

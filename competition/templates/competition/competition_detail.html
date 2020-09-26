@@ -100,9 +100,9 @@
                     </div>
                     <div class="col-md-8 col-sm-12 col-xs-12">
                         <h3> {{ Competition.name }} </h3>
-                        <p><i class="fas fa-calendar-check"></i><b>{{ Competition.begin_date}} - {{ Competition.begin_date}} IST</b>
+                        <p><i class="fas fa-calendar-check"></i><b>{{ Competition.submission_start}} - {{ Competition.submission_close}} IST</b>
                         </p>
-                        <p><i class="fas fa-map-marker-alt"></i><b>Pune</b></p>
+                        <p><i class="fas fa-map-marker-alt"></i><b>Online</b></p>
                     </div>
                 </div>
             </div>
@@ -111,7 +111,7 @@
                     <div style="text-align: center; padding-top: 50px;">
                         <p style="font-size: 18px;"><i class="fas fa-users"></i><b>Team Size: {{ Competition.min_size}}-{{ Competition.max_size}} member/s</b></p>
                     </div>
-                    <a id="button" class="btn btn-primary more register-btn" href="{% url 'competition-register' Competition.id %}">
+                    <a id="button" class="btn btn-primary more register-btn" style="overflow: visible;" href="{% url 'competition-register' Competition.id %}">
                         <div>Register Now</div>
                         <div><i class="ion-ios-arrow-thin-right"></i></div>
                     </a>
@@ -166,7 +166,7 @@
                                     
         
                                 if(now < startDate){
-                                    header.innerHTML = "Registration will start on {{ Competition.begin_day }}-{{ Competition.begin_month }}-{{ Competition.begin_year }}"
+                                    header.innerHTML = "Registration will start on <br> {{ Competition.begin_day }}-{{ Competition.begin_month }}-{{ Competition.begin_year }}"
                                     document.getElementById("button").remove();
                                     document.getElementById("preregister").remove();
                                 }
@@ -214,11 +214,11 @@
                 </div>
                 <div style="display: flex; align-items: center; flex-direction:column; padding-top:10px; padding-bottom: 18px;">
                     <div style=" padding-top: 8px;">
-                        <h5><i class="fas fa-calendar-check"></i><b>{{ Competition.last_date }} IST</b></h5>
+                        <h5><i class="fas fa-calendar-check"></i><b>{{ Competition.registration_deadline }} IST</b></h5>
                         <p>Registration Deadline</p>
                     </div>
                     <div style=" padding-top: 8px;">
-                        <h5><i class="fas fa-calendar-check"></i><b>{{ Competition.event_date }} IST</b></h5>
+                        <h5><i class="fas fa-calendar-check"></i><b>{{ Competition.submission_start }} IST</b></h5>
                         <p>Event Date</p>
                     </div>
                 </div>
