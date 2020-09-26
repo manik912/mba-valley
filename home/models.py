@@ -19,5 +19,8 @@ class Post(models.Model):
     def __str__(self):
         return self.title
 
-class Slider(models.Model):
-    image = models.ImageField(default='default.jpg', upload_to='blog_images', blank=True)
+
+
+class carousel(models.Model):
+    """docstring for carousel"""
+    image               = models.ImageField(default = 'home_carousel/default.png', upload_to = 'home_carousel/')
