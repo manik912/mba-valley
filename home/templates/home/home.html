@@ -8,7 +8,50 @@
     <div class="container">
         <div class="row">
             <!--Latest Stories-->
-            <div class="col-md-8 col-sm-12 col-xs-12" style="padding-bottom: 10px;">
+            <!--Sidebar-competition-->
+            <div class="col-sm-4 sidebar" id="sidebar" style="width: 25%;">
+                <div class="sidebar-title for-tablet">Sidebar</div>
+                <aside>
+                    <h1 class="aside-title">Trending Stories <a href="{% url 'competition' %}" class="all">See All <i
+                                class="ion-ios-arrow-right"></i></a></h1>
+                    <div class="aside-body">
+                        {% if trending_story %}
+                        {% for post in trending_story %}
+                        <article class="article-mini">
+                            <div class="inner">
+                                <figure>
+                                    <a href="{% url 'post-detail' post.id %}">
+                                        <img src="{{ post.blog_image.url }}" alt="Sample Article">
+                                    </a>
+                                </figure>
+                                <div class="padding">
+                                    <h1><a href="{% url 'post-detail' post.id %}">{{ post.title }}</a></h1>
+                                </div>
+                            </div>
+                        </article>
+                        {% endfor %}
+                        {% endif %}
+
+                    </div>
+                </aside>
+                <!-- <aside>
+                    <h1 class="aside-title">Videos</h1>
+                    <div class="carousel-nav" id="video-list-nav">
+                        <div class="prev"><i class="ion-ios-arrow-left"></i></div>
+                        <div class="next"><i class="ion-ios-arrow-right"></i></div>
+                    </div>
+
+                    <div class="aside-body">
+                        <ul class="video-list" data-youtube='"carousel":true, "nav": "#video-list-nav"'>
+                            <li><a data-youtube-id="PJutG613i7E" data-action="new_tab"></a></li>
+                            <li><a data-youtube-id="PJutG613i7E" data-action="new_tab"></a></li>
+                            <li><a data-youtube-id="PJutG613i7E" data-action="new_tab"></a></li>
+                        </ul>
+                    </div>
+                </aside> -->
+            </div>
+            
+            <div class="col-sm-4" style="padding-bottom: 10px; width: 50%;">
                 <div id="myCarousel" class="carousel slide" data-ride="carousel">
                     <!-- Indicators -->
                     <ol class="carousel-indicators">
@@ -43,74 +86,35 @@
 
                 </div>
             </div>
-            <!--Sidebar-competition-->
-            <div class="col-xs-6 col-md-4 sidebar" id="sidebar">
+            <div class="col-sm-4 sidebar" id="sidebar" style="width: 25%;">
                 <div class="sidebar-title for-tablet">Sidebar</div>
                 <aside>
                     <h1 class="aside-title">Competitions <a href="{% url 'competition' %}" class="all">See All <i
                                 class="ion-ios-arrow-right"></i></a></h1>
                     <div class="aside-body">
-                        {% if competition_popular %}
-                        {% for competition in competition_popular %}
+                        {% for competition in comp %}
                         <article class="article-mini">
                             <div class="inner">
                                 <figure>
-                                    <a href="{% url 'competition-detail' %}">
-                                        <img src="{{ competition.blog_image.url }}" alt="Sample Article">
+                                    <a href="{% url 'competition-detail' competition.id %}">
+                                        <img src="{{ competition.image.url }}" alt="Sample Article">
                                     </a>
                                 </figure>
                                 <div class="padding">
-                                    <h1><a href="articles/article.html">{{ competition.name }}</a></h1>
+                                    <h1><a href="{% url 'competition-detail' competition.id %}">{{ competition.name }}</a></h1>
                                 </div>
                             </div>
                         </article>
                         {% endfor %}
-                        {% endif %}
 
                     </div>
                 </aside>
-                <aside>
-                    <h1 class="aside-title">Trending Stories <a href="{% url 'competition' %}" class="all">See All <i
-                                class="ion-ios-arrow-right"></i></a></h1>
-                    <div class="aside-body">
-                        {% if posts %}
-                        {% for post in posts %}
-                        <article class="article-mini">
-                            <div class="inner">
-                                <figure>
-                                    <a href="articles/article.html">
-                                        <img src="{{ post.blog_image.url }}" alt="Sample Article">
-                                    </a>
-                                </figure>
-                                <div class="padding">
-                                    <h1><a href="articles/article.html">{{ post.title }}</a></h1>
-                                </div>
-                            </div>
-                        </article>
-                        {% endfor %}
-                        {% endif %}
-
-                    </div>
-                </aside>
-                <!-- <aside>
-                    <h1 class="aside-title">Videos</h1>
-                    <div class="carousel-nav" id="video-list-nav">
-                        <div class="prev"><i class="ion-ios-arrow-left"></i></div>
-                        <div class="next"><i class="ion-ios-arrow-right"></i></div>
-                    </div>
-
-                    <div class="aside-body">
-                        <ul class="video-list" data-youtube='"carousel":true, "nav": "#video-list-nav"'>
-                            <li><a data-youtube-id="PJutG613i7E" data-action="new_tab"></a></li>
-                            <li><a data-youtube-id="PJutG613i7E" data-action="new_tab"></a></li>
-                            <li><a data-youtube-id="PJutG613i7E" data-action="new_tab"></a></li>
-                        </ul>
-                    </div>
-                </aside> -->
             </div>
+        </div>
 
 
             <!--Latest Stories-->
+        <div class="row">
             <div class="col-md-12 col-sm-12 col-xs-12">
                 <h5 class="aside-title">Latest Stories <span style="position: absolute; right: 20px;"><a
                             href="{% url 'latest-stories' %}" class="all">See All <i
@@ -136,17 +140,10 @@
                                         <h2><a href="#">{{ post.title }}</a></h2>
                                         <p>{{ post.content|truncatechars:100 }} </p>
                                         <footer>
-                                            {% if user.is_authenticated %}
                                             <a class="btn btn-primary more" href="{% url 'post-detail' post.id %}">
                                                 <div>More</div>
                                                 <div><i class="ion-ios-arrow-thin-right"></i></div>
                                             </a>
-                                            {% else %}
-                                            <a class="btn btn-primary more" href="{% url 'login' %}">
-                                                <div>More</div>
-                                                <div><i class="ion-ios-arrow-thin-right"></i></div>
-                                            </a>
-                                            {% endif %}
                                         </footer>
                                     </div>
                                 </div>
@@ -186,17 +183,10 @@
                                         <h2><a href="#">{{ post.title }}</a></h2>
                                         <p>{{ post.content|truncatechars:100 }} </p>
                                         <footer>
-                                            {% if user.is_authenticated %}
                                             <a class="btn btn-primary more" href="{% url 'post-detail' post.id %}">
                                                 <div>More</div>
                                                 <div><i class="ion-ios-arrow-thin-right"></i></div>
                                             </a>
-                                            {% else %}
-                                            <a class="btn btn-primary more" href="{% url 'login' %}">
-                                                <div>More</div>
-                                                <div><i class="ion-ios-arrow-thin-right"></i></div>
-                                            </a>
-                                            {% endif %}
                                         </footer>
                                     </div>
                                 </div>
@@ -235,17 +225,10 @@
                                         <h2><a href="#">{{ post.title }}</a></h2>
                                         <p>{{ post.content|truncatechars:100 }} </p>
                                         <footer>
-                                            {% if user.is_authenticated %}
                                             <a class="btn btn-primary more" href="{% url 'post-detail' post.id %}">
                                                 <div>More</div>
                                                 <div><i class="ion-ios-arrow-thin-right"></i></div>
                                             </a>
-                                            {% else %}
-                                            <a class="btn btn-primary more" href="{% url 'login' %}">
-                                                <div>More</div>
-                                                <div><i class="ion-ios-arrow-thin-right"></i></div>
-                                            </a>
-                                            {% endif %}
                                         </footer>
                                     </div>
                                 </div>

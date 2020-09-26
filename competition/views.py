@@ -52,7 +52,7 @@ def competitionRegister(request, pk):
 		compe.registered = compe.registered + 1
 		compe.save()
 		form.save()
-		return redirect('https://github.com/tanya1810/mba-valley')
+		return redirect('https://docs.google.com/forms/d/1x7Wp0bHMWFMCEaq3dopv-bPU9bOFeuJJXXhfkqOw6w0/edit')
 	else:
 		form = Register()		
 	context = {
