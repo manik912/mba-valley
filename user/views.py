@@ -26,9 +26,6 @@ def update(request):
 		if form.is_valid():
 			form.save()
 			return redirect('/')
-		else:
-			form = UserUpdate(instance=request.user)
-		context = {
-			'form' : form,
-		}
-		return render(request, 'user/update_profile.html', context)
+	else:
+		form = UserUpdate()
+	return render(request, 'user/update_profile.html',{'form': form})
