@@ -20,7 +20,7 @@ def register(request):
         form = UserRegistrationForm()
     return render(request, 'user/register.html', {'form': form})
 
-def update():
+def update(request):
 	if request.method == 'POST':
 		form = UserUpdate(request.POST, instance=request.user)
 		if form.is_valid():
@@ -31,4 +31,4 @@ def update():
 		context = {
 			'form' : form,
 		}
-	return render(request, 'user/update_profile.html', context)
+		return render(request, 'user/update_profile.html', context)
