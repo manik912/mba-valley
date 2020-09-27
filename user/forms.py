@@ -23,4 +23,9 @@ class UserRegistrationForm(UserCreationForm):
 	# class Meta(UserCreationForm.Meta):
 	# 	model 	= User
 	# 	fields 	= ['name','email','password1','password2']
-
+class UserUpdate(forms.ModelForm):
+	"""docstring for UserUpdate"""
+	class Meta(object):
+		"""docstring for Meta"""
+		model = User
+		fields = ['name', 'contact_no']
