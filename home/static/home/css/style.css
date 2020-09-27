@@ -1248,7 +1248,7 @@ section.search .search-result {
 }
 .firstbar .search {
   margin-top: 20px;
-  margin-left: 55px;
+  margin-right: 55px;
 }
 .firstbar .search .form-group {
   margin-bottom: 0;
@@ -2955,10 +2955,6 @@ aside .ads figcaption {
 
   .for-mobile {
     display: block !important;
-  }
-
-  .nav-icons {
-    display: none;
   }
 
   .box-wrapper {
