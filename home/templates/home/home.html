@@ -1,6 +1,16 @@
 {% extends 'home/base.html' %}
 {% load static %}
 {% block head %}
+<style>
+    .bg-img {
+        background-repeat: no-repeat;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+        background-position: center center;
+    }
+</style>
 {% endblock head %}
 {% block body %}
 <section class="home">
@@ -9,7 +19,7 @@
         <div class="row">
             <!--Latest Stories-->
             <!--Sidebar-competition-->
-            <div class="col-sm-4 sidebar" id="sidebar" style="width: 25%;">
+            <div class="col-lg-3 col-12 sidebar" id="sidebar" >
                 <div class="sidebar-title for-tablet">Sidebar</div>
                 <aside>
                     <h1 class="aside-title">Trending Stories <a href="{% url 'competition' %}" class="all">See All <i
@@ -51,7 +61,7 @@
                 </aside> -->
             </div>
             
-            <div class="col-sm-4" style="padding-bottom: 10px; width: 50%;">
+            <div class="col-lg-6 col-12" style="padding-bottom: 10px;">
                 <div id="myCarousel" class="carousel slide" data-ride="carousel">
                     <!-- Indicators -->
                     <ol class="carousel-indicators">
@@ -80,7 +90,7 @@
 
                 </div>
             </div>
-            <div class="col-sm-4 sidebar" id="sidebar" style="width: 25%;">
+            <div class="col-lg-3 sidebar" id="sidebar" >
                 <div class="sidebar-title for-tablet">Sidebar</div>
                 <aside>
                     <h1 class="aside-title">Competitions <a href="{% url 'competition' %}" class="all">See All <i
@@ -117,14 +127,14 @@
                 <div class="row">
                     {% if latest_story %}
                     {% for post in latest_popular %}
-                    <div class="col-md-4 col-sm-6 col-xs-12">
+                    <div class="col-md-3 col-sm-6 col-xs-12">
                         <div class="row">
                             <article class="article col-md-12">
                                 <div class="inner">
-                                    <figure>
-                                        <a href="#">
+                                    <figure class="bg-img" style="background-image: url('{{ post.blog_image.url }}');">
+                                        <!-- <a href="#">
                                             <img src="{{ post.blog_image.url }}" alt="Sample Article">
-                                        </a>
+                                        </a> -->
                                     </figure>
                                     <div class="padding">
                                         <div class="detail">
@@ -160,14 +170,14 @@
                 <div class="row">
                     {% if startup_story %}
                     {% for post in startup_popular %}
-                    <div class="col-md-4 col-sm-6 col-xs-12">
+                    <div class="col-md-3 col-sm-6 col-xs-12">
                         <div class="row">
                             <article class="article col-md-12">
                                 <div class="inner">
-                                    <figure>
-                                        <a href="#">
+                                    <figure class="bg-img" style="background-image: url('{{ post.blog_image.url }}');">
+                                        <!-- <a href="#">
                                             <img src="{{ post.blog_image.url }}" alt="Sample Article">
-                                        </a>
+                                        </a> -->
                                     </figure>
                                     <div class="padding">
                                         <div class="detail">
@@ -202,14 +212,14 @@
                 <div class="row">
                     {% if mba_story %}
                     {% for post in mba_popular %}
-                    <div class="col-md-4 col-sm-6 col-xs-12">
+                    <div class="col-md-3 col-sm-6 col-xs-12">
                         <div class="row">
                             <article class="article col-md-12">
                                 <div class="inner">
-                                    <figure>
-                                        <a href="#">
+                                    <figure class="bg-img" style="background-image: url('{{ post.blog_image.url }}');">
+                                        <!-- <a href="#">
                                             <img src="{{ post.blog_image.url }}" alt="Sample Article">
-                                        </a>
+                                        </a> -->
                                     </figure>
                                     <div class="padding">
                                         <div class="detail">
