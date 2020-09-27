@@ -1,0 +1,51 @@
+{% extends 'home/base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block body %}
+<section class="login grey">
+    <div class="container">
+        <div class="box-wrapper">				
+            <div class="box box-border">
+                <div class="box-body">
+                    <h4>Register</h4>
+                    <form method="POST">
+                        <div class="form-group">
+                            <label>Name</label>
+                            <div type="text" name="name" class="form-control">
+                                {{ user.name }}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Email</label>
+                            <div type="text" name="name" class="form-control">
+                                {{ user.email }}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Phone Number</label>
+                            <div type="text" name="name" class="form-control">
+                                {{ user.contact_no }}
+                            </div>
+                        </div>
+                        {% csrf_token %}
+                        {{ form|crispy }}
+                        <input  type="submit" value="Register" class="btn btn-primary btn-block" />
+
+<!--                         <div class="form-group">
+                            <label>Email</label>
+                            <input type="email" name="email" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>Phone Number</label>
+                            <input type="tel" name="phone" class="form-control">
+                        </div>
+                        <div class="form-group text-right">
+                            <button class="btn btn-primary btn-block">Register</button>
+                        </div> -->
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock body %}
