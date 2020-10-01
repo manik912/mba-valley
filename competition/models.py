@@ -9,7 +9,7 @@ class competition(models.Model):
     """docstring for competition"""
 
     organiser 			= models.ForeignKey(User, related_name = 'organiser', on_delete = models.CASCADE, null = True)
-    name 				= models.CharField(max_length = 20)
+    name 				= models.CharField(max_length = 50)
     about 				= models.CharField(max_length = 200)
     registration_open 			= models.DateTimeField(default = timezone.now)
     registration_deadline 			= models.DateTimeField(default = timezone.now)

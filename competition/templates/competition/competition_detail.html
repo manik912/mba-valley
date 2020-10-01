@@ -111,10 +111,17 @@
                     <div style="text-align: center; padding-top: 50px;">
                         <p style="font-size: 18px;"><i class="fas fa-users"></i><b>Team Size: {{ Competition.min_size}}-{{ Competition.max_size}} member/s</b></p>
                     </div>
-                    <a id="button" class="btn btn-primary more register-btn" style="overflow: visible;" href="{% url 'competition-register' Competition.id %}">
-                        <div>Register Now</div>
-                        <div><i class="ion-ios-arrow-thin-right"></i></div>
-                    </a>
+                    {% if user.is_authenticated %}
+                        <a id="button" class="btn btn-primary more register-btn" style="overflow: visible;" href="{% url 'competition-register' Competition.id %}">
+                            <div>Register Now</div>
+                            <div><i class="ion-ios-arrow-thin-right"></i></div>
+                        </a>
+                    {% else %}
+                        <a id="button" class="btn btn-primary more register-btn" style="overflow: visible;" href="{% url 'login' %}">
+                            <div>Register Now</div>
+                            <div><i class="ion-ios-arrow-thin-right"></i></div>
+                        </a>
+                    {% endif %}
                     <div id="abcd" class="btn btn-primary more register-btn"></div>
                     
                 </div>

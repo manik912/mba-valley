@@ -163,6 +163,7 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'guptamanik1921@gmail.com'
-EMAIL_HOST_PASSWORD = 'jeemain2019'
+EMAIL_HOST_PASSWORD = 'txrsupwxxmfufkzd'
+DEFAULT_FROM_EMAIL = 'MBA Valley Team<noreply@mbavalley.com>'
 
 

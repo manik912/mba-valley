@@ -20,8 +20,10 @@ def competitionDetailView(request, pk):
 
 def CompetitionListView(request):
 	Competition = competition.objects.all()
+	published = competition.objects.filter(is_published=True)
 	context = {
-		'Competition' : Competition
+		'Competition' : Competition,
+		'published': published 
 	}
 	return render(request, 'competition/competition.html', context)
 
@@ -45,20 +47,21 @@ def submit(request, pk):
 	return render(request, 'competition/submit.html', context)
 
 def competitionCreateView(request):
-    if request.method == 'POST':
-        form = competitionCreateForm(request.POST, request.FILES)
-        if form.is_valid():
-            form.save()
-            messages.success(
-                request, 'Your submission has been sent to our team for review. You will be notified via e-mail if it is published.')
+	if request.method == 'POST':
+		form = competitionCreateForm(request.POST, request.FILES)
+		if form.is_valid():
+			form.instance.organiser = request.user
+			form.save()
+			messages.success(
+				request, 'Your submission has been sent to our team for review. In case of any query, you can contact us.')
 
-            return HttpResponseRedirect(reverse('competition'))
-    else:
-        form = competitionCreateForm()
-    context = {
-        'form': form,
-    }
-    return render(request, 'competition/competition_form.html', context)
+			return HttpResponseRedirect(reverse('competition'))
+	else:
+		form = competitionCreateForm()
+	context = {
+		'form': form,
+	}
+	return render(request, 'competition/competition_form.html', context)
 
 
 def competitionRegister(request, pk):

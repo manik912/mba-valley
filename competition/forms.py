@@ -22,4 +22,4 @@ class Register(forms.ModelForm):
 class competitionCreateForm(forms.ModelForm):	
 	class Meta():
 		model 	= competition
-		fields=['organiser','name','about','registration_open','registration_deadline','submission_start','submission_close','min_size','max_size','image','file']
+		fields=['name','about','registration_open','registration_deadline','submission_start','submission_close','min_size','max_size','image','file']
