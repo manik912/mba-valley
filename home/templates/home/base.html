@@ -41,7 +41,7 @@
 			<div class="firstbar">
 				<div class="container">
 					<div class="row">
-						<div class="col-sm-4">
+						<div class="col-md-2 col-sm-12">
 							<div class="brand">
 								<a href="{% url 'home' %}">
 									<img src="{% static 'home/images/logo.jpg' %}" alt="Mba Valley Logo" class="logo">
@@ -49,8 +49,8 @@
 							</div>	
 							<!-- <div class="tagline">Let's Grow Together</div>					 -->
 						</div>
-						<div class="col-sm-4">
-							<form class="search" method="GET" autocomplete="off" action="{% url 'search' %}">
+						<div class="col-md-6 col-sm-12">
+							<form class="search" method="GET" autocomplete="off" action="{% url 'search' %}" style="max-width: 300px;">
 								<div class="form-group">
 									<div class="input-group">
 										<input type="search" name="search" class="form-control" placeholder="Search for articles">									
@@ -62,7 +62,7 @@
 								</div>
 							</form>								
 						</div>
-						<div class="col-sm-4">
+						<div class="col-md-4 col-sm-12">
 							{% if user.is_authenticated %}
 								<ul class="nav-icons">
 									<li><a href="{% url 'competition-create' %}"><i class="ion-person-add"></i><div style="font-size: 16px;">PUBLISH OPPORTUNITY</div></a></li>
@@ -71,7 +71,7 @@
 								</ul>
 							{% else %}
 								<ul class="nav-icons">
-									<li><a href="{% url 'login' %}"><i class="ion-person-add"></i><div style="font-size: 16px;">PUBLISH OPPORTUNITY</div></a></li>
+									<li><a href="{% url 'competition-create' %}"><i class="ion-person-add"></i><div style="font-size: 16px;">PUBLISH OPPORTUNITY</div></a></li>
 									<li><a href="{% url 'login' %}"><i class="ion-person"></i><div style="font-size: 16px;">Login</div></a></li>
 								</ul>
 							{% endif %}

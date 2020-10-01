@@ -3,7 +3,7 @@
 {% block head %}
 {% endblock head %}
 {% block body %}
-<section class="login first grey">
+<!-- <section class="login first grey"> -->
     <div class="container">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="p2">
@@ -11,7 +11,7 @@
                     <hr>
                         <p> Posted on {{ post.date_published }}</p>
                     <hr>
-                    <p>{{ post.content }}</p>
+                    <p>{{ post.content|linebreaks }}</p>
             </div>
                 
         </div>
