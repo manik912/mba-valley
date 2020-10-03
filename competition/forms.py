@@ -1,5 +1,5 @@
 from django import forms
-from .models import submit, Team, register, competition
+from .models import submit, Team, register, competition, prizes
 from django.http import request
 
 class SubmitForm(forms.ModelForm):	
@@ -22,4 +22,12 @@ class Register(forms.ModelForm):
 class competitionCreateForm(forms.ModelForm):	
 	class Meta():
 		model 	= competition
-		fields=['organiser','name','about','registration_open','registration_deadline','submission_start','submission_close','min_size','max_size','image','file']
+		fields=['organiser','name','about','registration_open','registration_deadline','submission_start','submission_close','team_link','min_size','max_size','image','file']
+
+class AwardForm(forms.ModelForm):
+
+	check = forms.CharField(max_length = 10, required = False)
+
+	class Meta():
+		model = prizes;
+		fields = ['title', 'reward', 'check']

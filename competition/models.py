@@ -18,6 +18,7 @@ class competition(models.Model):
     min_size 			= models.IntegerField(default = 1)
     max_size 			= models.IntegerField(default = 1)
     image 				= models.ImageField(default = 'competition/default.png', upload_to = 'competition/')
+    team_link           = models.CharField(max_length = 100, default = '')
     registered 			= models.IntegerField(default = 0)
     competition_popular = models.BooleanField(default = False)
     file                = models.FileField(upload_to = 'file/', default = 'competition/default.png')
