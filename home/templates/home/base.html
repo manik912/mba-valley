@@ -33,6 +33,12 @@
 			.primary{
 				position: relative !important;
 			}
+			@media only screen and (min-width: 470px){
+				.nav-icons{
+					display: flex;
+					justify-content: center;
+				}
+			}
 		</style>
 
 	</head>
@@ -49,7 +55,7 @@
 							</div>	
 							<!-- <div class="tagline">Let's Grow Together</div>					 -->
 						</div>
-						<div class="col-md-6 col-sm-12">
+						<div class="col-md-4 col-sm-12">
 							<form class="search" method="GET" autocomplete="off" action="{% url 'search' %}" style="max-width: 300px;">
 								<div class="form-group">
 									<div class="input-group">
@@ -62,7 +68,7 @@
 								</div>
 							</form>								
 						</div>
-						<div class="col-md-4 col-sm-12">
+						<div class="col-md-6 col-sm-12">
 							{% if user.is_authenticated %}
 								<ul class="nav-icons">
 									<li><a href="{% url 'competition-create' %}"><i class="ion-person-add"></i><div style="font-size: 16px;">PUBLISH OPPORTUNITY</div></a></li>
