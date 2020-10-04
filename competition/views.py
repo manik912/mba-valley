@@ -48,6 +48,7 @@ def competitionCreateView(request):
 	if request.method == 'POST':
 		form = competitionCreateForm(request.POST, request.FILES)
 		if form.is_valid():
+			form.instance.name = form.cleaned_data.get('event_name')
 			x = form.save()
 			messages.success(
 				request, 'Your submission has been sent to our team for review. You will be notified via e-mail if it is published.')
