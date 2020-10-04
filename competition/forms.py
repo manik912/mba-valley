@@ -19,10 +19,11 @@ class Register(forms.ModelForm):
 		model =	register
 		fields = ['College']
 
-class competitionCreateForm(forms.ModelForm):	
+class competitionCreateForm(forms.ModelForm):
+	event_name = forms.CharField(max_length = 20)
 	class Meta():
 		model 	= competition
-		fields=['name','about','registration_open','registration_deadline','submission_start','submission_close','min_size','max_size','image','file']
+		fields=['organiser','event_name','about','registration_open','registration_deadline','submission_start','submission_close','min_size','max_size','image','file']
 
 class AwardForm(forms.ModelForm):
 
