@@ -8,9 +8,10 @@ from phone_field import PhoneField
 class competition(models.Model):
     """docstring for competition"""
 
-    organiser 			= models.ForeignKey(User, related_name = 'organiser', on_delete = models.CASCADE, null = True)
+    organiser_name 				= models.CharField(max_length = 50, default = "Enter Organiser Name")
+    organiser_email				= models.CharField(max_length = 50, default = "Enter Organiser Email")
     name 				= models.CharField(max_length = 50)
-    about 				= models.CharField(max_length = 200)
+    about 				= models.CharField(max_length = 20000)
     registration_open 			= models.DateTimeField(default = timezone.now)
     registration_deadline 			= models.DateTimeField(default = timezone.now)
     submission_start 			= models.DateTimeField(default = timezone.now)
