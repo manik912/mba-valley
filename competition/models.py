@@ -8,9 +8,10 @@ from phone_field import PhoneField
 class competition(models.Model):
     """docstring for competition"""
 
-    organiser 			= models.ForeignKey(User, related_name = 'organiser', on_delete = models.CASCADE, null = True)
-    name 				= models.CharField(max_length = 20)
-    about 				= models.CharField(max_length = 200)
+    organiser_name 				= models.CharField(max_length = 50, default = "Enter Organiser Name")
+    organiser_email				= models.CharField(max_length = 50, default = "Enter Organiser Email")
+    name 				= models.CharField(max_length = 50)
+    about 				= models.CharField(max_length = 20000)
     registration_open 			= models.DateTimeField(default = timezone.now)
     registration_deadline 			= models.DateTimeField(default = timezone.now)
     submission_start 			= models.DateTimeField(default = timezone.now)
@@ -18,6 +19,7 @@ class competition(models.Model):
     min_size 			= models.IntegerField(default = 1)
     max_size 			= models.IntegerField(default = 1)
     image 				= models.ImageField(default = 'competition/default.png', upload_to = 'competition/')
+    team_link           = models.CharField(max_length = 100, default = '')
     registered 			= models.IntegerField(default = 0)
     competition_popular = models.BooleanField(default = False)
     file                = models.FileField(upload_to = 'file/', default = 'competition/default.png')
