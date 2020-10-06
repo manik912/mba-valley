@@ -143,9 +143,11 @@
                     </div>
                         <script type="text/javascript">
                             function countdown() {
+                                var dateFormat = require('dateformat');
                                 var now = new Date();
-                                var startDate = new Date({{ Competition.begin_year }}, {{ Competition.begin_month }} - 1, {{ Competition.begin_day }});
-                                var endDate = new Date({{ Competition.last_year }}, {{ Competition.last_month }} - 1, {{ Competition.last_day }});
+                                dateFormat(now, "yyyy, mm, dd h:MM:ss");
+                                var startDate = new Date({{ Competition.begin_year }}, {{ Competition.begin_month }} - 1, {{ Competition.begin_day }}, {{ Competition.begin_hour }}, {{ Competition.begin_minute }}, {{ Competition.begin_second }});
+                                var endDate = new Date({{ Competition.last_year }}, {{ Competition.last_month }} - 1, {{ Competition.last_day }}, {{ Competition.last_hour }}, {{ Competition.last_minute }}, {{ Competition.last_second }});
              
                                 var currentTime = now.getTime();
                                 var endTime = endDate.getTime();
@@ -257,8 +259,8 @@
             <script type="text/javascript">
                 function countdown() {
                     var now = new Date();
-                    var openDate = new Date({{ Competition.open_year }}, {{ Competition.open_month }} - 1, {{ Competition.open_day }});
-                    var closeDate = new Date({{ Competition.close_year }}, {{ Competition.close_month }} - 1, {{ Competition.close_day }});
+                    var openDate = new Date({{ Competition.open_year }}, {{ Competition.open_month }} - 1, {{ Competition.open_day }}, {{ Competition.open_hour }}, {{ Competition.open_minute }}, {{ Competition.open_second }});
+                    var closeDate = new Date({{ Competition.close_year }}, {{ Competition.close_month }} - 1, {{ Competition.close_day }}, {{ Competition.close_hour }}, {{ Competition.close_minute }}, {{ Competition.close_second }});
  
                     var currentTime = now.getTime();
                     var closeTime = closeDate.getTime();
