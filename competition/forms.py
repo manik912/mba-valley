@@ -21,10 +21,9 @@ class Register(forms.ModelForm):
 
 class competitionCreateForm(forms.ModelForm):
 	event_name = forms.CharField(max_length = 50)
-	about_the_event = forms.CharField(max_length = 20000)
 	class Meta():
 		model 	= competition
-		fields=['organiser_name','organiser_email','event_name','about_the_event','registration_open','registration_deadline','submission_start','submission_close','min_size','max_size','image','file']
+		fields=['organiser_name','organiser_email','event_name','about','registration_open','registration_deadline','submission_start','submission_close','min_size','max_size','image','file']
 
 class AwardForm(forms.ModelForm):
 
