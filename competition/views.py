@@ -4,6 +4,7 @@ from django.urls import reverse
 from .models import competition, prizes
 from .models import prizes as Prizes
 from .forms import SubmitForm, TeamForm, Register, competitionCreateForm, AwardForm
+from django.utils.timezone import localtime, get_current_timezone
 
 
 # Create your views here.

@@ -11,7 +11,7 @@ class competition(models.Model):
     organiser_name 				= models.CharField(max_length = 50, default = "Enter Organiser Name")
     organiser_email				= models.CharField(max_length = 50, default = "Enter Organiser Email")
     name 				= models.CharField(max_length = 50)
-    about 				= models.CharField(max_length = 20000)
+    about 				= models.CharField(max_length = 20000, default = "About the event")
     registration_open 			= models.DateTimeField(default = timezone.now)
     registration_deadline 			= models.DateTimeField(default = timezone.now)
     submission_start 			= models.DateTimeField(default = timezone.now)
@@ -32,43 +32,80 @@ class competition(models.Model):
         return self.registration_deadline.strftime('%Y')
 
     def last_month(self):
-        return self.registration_deadline.strftime('%m')
+        return self.registration_deadline.strftime('%b')
 
     def last_day(self):
         return self.registration_deadline.strftime('%d')
+
+    def last_hour(self):
+        return self.registration_deadline.strftime('%I')
+
+    def last_minute(self):
+        return self.registration_deadline.strftime('%M')
+
+    def last_second(self):
+        return self.registration_deadline.strftime('%S')
 
     def begin_year(self):
         return self.registration_open.strftime('%Y')
 
     def begin_month(self):
-        return self.registration_open.strftime('%m')
+        return self.registration_open.strftime('%b')
 
     def begin_day(self):
         return self.registration_open.strftime('%d')
+
+    def begin_hour(self):
+        return self.registration_open.strftime('%H')
+
+    def begin_minute(self):
+        return self.registration_open.strftime('%M')
+
+    def begin_second(self):
+        return self.registration_open.strftime('%S')
 
     def open_year(self):
         return self.submission_start.strftime('%Y')
 
     def open_month(self):
-        return self.submission_start.strftime('%m')
+        return self.submission_start.strftime('%b')
 
     def open_day(self):
         return self.submission_start.strftime('%d')
+
+    def open_hour(self):
+        return self.submission_start.strftime('%H')
+
+    def open_minute(self):
+        return self.submission_start.strftime('%M')
+
+    def open_second(self):
+        return self.submission_start.strftime('%S')
 
     def close_year(self):
         return self.submission_close.strftime('%Y')
 
     def close_month(self):
-        return self.submission_close.strftime('%m')
+        return self.submission_close.strftime('%b')
 
     def close_day(self):
         return self.submission_close.strftime('%d')
 
+    def close_hour(self):
+        return self.submission_close.strftime('%H')
+
+    def close_minute(self):
+        return self.submission_close.strftime('%M')
+
+    def close_second(self):
+        return self.submission_close.strftime('%S')
+
 class register(models.Model):
-	"""docstring for register"""
-	event 			= models.ForeignKey(competition, related_name = 'competition', on_delete = models.CASCADE, null = True)
-	team_leader 	= models.ForeignKey(User, related_name = 'participants', on_delete = models.CASCADE, null = True)
-	College 		= models.CharField(max_length = 50, default = "Enter Your College Name")
+    """docstring for register"""
+    event 			= models.ForeignKey(competition, related_name = 'competition', on_delete = models.CASCADE, null = True)
+    team_leader 	= models.ForeignKey(User, related_name = 'participants', on_delete = models.CASCADE, null = True)
+    College 		= models.CharField(max_length = 50, default = "Enter Your College Name")
+
 
 
 class prizes(models.Model):
