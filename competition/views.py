@@ -52,7 +52,7 @@ def competitionCreateView(request):
 		form = competitionCreateForm(request.POST, request.FILES)
 		if form.is_valid():
 			form.instance.name = form.cleaned_data.get('event_name')
-			form.instance.about = form.cleaned_data.get('about_the_event')
+			# form.instance.about = form.cleaned_data.get('about_the_event')
 			x = form.save()
 
 			return redirect('award_register', pk = x.id)

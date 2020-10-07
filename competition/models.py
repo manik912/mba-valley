@@ -11,7 +11,7 @@ class competition(models.Model):
     organiser_name 				= models.CharField(max_length = 50, default = "Enter Organiser Name")
     organiser_email				= models.CharField(max_length = 50, default = "Enter Organiser Email")
     name 				= models.CharField(max_length = 50)
-    about 				= models.CharField(max_length = 20000, default = "About the event")
+    about 				= models.TextField(max_length = 20000, null=True, default = "About the event")
     registration_open 			= models.DateTimeField(default = timezone.now)
     registration_deadline 			= models.DateTimeField(default = timezone.now)
     submission_start 			= models.DateTimeField(default = timezone.now)
