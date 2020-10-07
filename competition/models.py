@@ -11,7 +11,7 @@ class competition(models.Model):
     organiser_name 				= models.CharField(max_length = 50, default = "Enter Organiser Name")
     organiser_email				= models.CharField(max_length = 50, default = "Enter Organiser Email")
     name 				= models.CharField(max_length = 50)
-    about 				= models.CharField(max_length = 20000)
+    about 				= models.CharField(max_length = 20000, default = "About the event")
     registration_open 			= models.DateTimeField(default = timezone.now)
     registration_deadline 			= models.DateTimeField(default = timezone.now)
     submission_start 			= models.DateTimeField(default = timezone.now)
@@ -32,13 +32,13 @@ class competition(models.Model):
         return self.registration_deadline.strftime('%Y')
 
     def last_month(self):
-        return self.registration_deadline.strftime('%m')
+        return self.registration_deadline.strftime('%b')
 
     def last_day(self):
         return self.registration_deadline.strftime('%d')
 
     def last_hour(self):
-        return self.registration_deadline.strftime('%H')
+        return self.registration_deadline.strftime('%I')
 
     def last_minute(self):
         return self.registration_deadline.strftime('%M')
@@ -50,7 +50,7 @@ class competition(models.Model):
         return self.registration_open.strftime('%Y')
 
     def begin_month(self):
-        return self.registration_open.strftime('%m')
+        return self.registration_open.strftime('%b')
 
     def begin_day(self):
         return self.registration_open.strftime('%d')
@@ -68,7 +68,7 @@ class competition(models.Model):
         return self.submission_start.strftime('%Y')
 
     def open_month(self):
-        return self.submission_start.strftime('%m')
+        return self.submission_start.strftime('%b')
 
     def open_day(self):
         return self.submission_start.strftime('%d')
@@ -86,7 +86,7 @@ class competition(models.Model):
         return self.submission_close.strftime('%Y')
 
     def close_month(self):
-        return self.submission_close.strftime('%m')
+        return self.submission_close.strftime('%b')
 
     def close_day(self):
         return self.submission_close.strftime('%d')

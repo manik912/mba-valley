@@ -20,7 +20,7 @@ class Register(forms.ModelForm):
 		fields = ['College']
 
 class competitionCreateForm(forms.ModelForm):
-	event_name = forms.CharField(max_length = 20)
+	event_name = forms.CharField(max_length = 50)
 	about_the_event = forms.CharField(max_length = 20000)
 	class Meta():
 		model 	= competition
